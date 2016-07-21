@@ -50,7 +50,7 @@ export {
 export const httpBoot = createAction(HTTP_BOOT, (httpServer) => ({ httpServer }))
 
 // Http request Action.
-export const httpRequest = createAction(HTTP_REQUEST, ({ request, response }) => ({ request, response }))
+export const httpRequest = createAction(HTTP_REQUEST, async ({ request, response }) => ({ request, response }))
 
 // Http after server bootstrap Action.
 export const httpAfterBoot = createAction(HTTP_AFTER_BOOT, (httpServer) => ({ httpServer }))
