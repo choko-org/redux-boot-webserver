@@ -1,24 +1,58 @@
-# Redux Boot modules's boilerplate.
+# Redux Boot Web Server module.
 
-[![Build Status](https://travis-ci.org/choko-org/redux-boot-module-boilerplate.svg?branch=master)](https://travis-ci.org/choko-org/redux-boot-module-boilerplate)
+[![Build Status](https://travis-ci.org/choko-org/redux-boot-webserver.svg?branch=master)](https://travis-ci.org/choko-org/redux-boot-webserver)
 
-Redux Boot module's boilerplate.
+Web server created using Redux Boot as it's core.
 
 ## Install
 ```bash
-npm install redux-boot-module-boilerplate --save
+npm install redux-boot-webserver --save
 ```
 
 ## Actions constants
 
 ```js
 import {
-  HELLO_WORLD
-} from 'redux-boot-module-boilerplate'
+  HTTP_BOOT,
+  HTTP_REQUEST,
+  HTTP_AFTER_BOOT
+} from 'redux-boot-webserver'
 ```
 
 ## Usage
 
 ```js
-// @TODO: Insert how to use.
+import boot from 'redux-boot'
+import webserverModule from 'redux-boot-webserver'
+
+const initialState = {
+  variables: { port: 3020 }
+}
+
+const backendModule = {
+  middleware: {
+    [HTTP_REQUEST]: store => next => action => {
+
+      const {response} = action.payload
+
+      response.statusCode = 200
+      response.setHeader('Content-Type', 'text/plain')
+      response.end('Hello Motherfocas!')
+
+      return next(action)
+    }
+  }
+}
+
+const modules = [
+  webserverModule,
+  backendModule
+]
+
+const app = boot(initialState, modules)
+  .then(({store, action}) => {
+    console.log('Your server is online!')
+  })
 ```
+
+Go to http://localhost:3020 and you would see the hello message.
