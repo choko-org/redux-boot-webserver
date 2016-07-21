@@ -1,7 +1,7 @@
 {
-  "name": "redux-boot-module-boilerplate",
+  "name": "redux-boot-webserver",
   "version": "1.0.0",
-  "description": "Redux Boot module's boilerplate.",
+  "description": "Redux Boot Web Server module.",
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -f dist/index.js* && webpack",
@@ -11,20 +11,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/choko-org/redux-boot-module-boilerplate.git"
+    "url": "git+https://github.com/choko-org/redux-boot-webserver.git"
   },
   "keywords": [
     "redux-boot",
     "module",
     "redux",
-    "boilerplate"
+    "webserver"
   ],
   "author": "",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/choko-org/redux-boot-module-boilerplate/issues"
+    "url": "https://github.com/choko-org/redux-boot-webserver/issues"
   },
-  "homepage": "https://github.com/choko-org/redux-boot-module-boilerplate#readme",
+  "homepage": "https://github.com/choko-org/redux-boot-webserver#readme",
   "devDependencies": {
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-runtime": "^6.6.0",

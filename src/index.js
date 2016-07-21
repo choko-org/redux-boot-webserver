@@ -20,10 +20,8 @@ export default {
       let nextResult = next(action)
 
       const server = http.createServer((request, response) => {
-        response.statusCode = 200
-        response.setHeader('Content-Type', 'text/plain')
         
-        response.end('Hello World!')
+        store.dispatch(httpRequest({request, response}))
       })
 
       const port = store.getState().variables.port
@@ -39,13 +37,15 @@ export default {
 
       return nextResult
     }
-
   }
 
 }
 
 // Http server bootstrap Action.
 export const httpBoot = createAction(HTTP_BOOT, (httpServer) => ({ httpServer }))
+
+// Http request Action.
+export const httpRequest = createAction(HTTP_REQUEST, ({ request, response }) => ({ request, response }))
 
 // Http after server bootstrap Action.
 export const httpAfterBoot = createAction(HTTP_AFTER_BOOT, (httpServer) => ({ httpServer }))

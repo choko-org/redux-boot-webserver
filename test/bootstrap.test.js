@@ -1,8 +1,8 @@
 import test from 'tape'
-import {BOOT} from 'redux-boot'
+import boot, {BOOT} from 'redux-boot'
 import request from 'supertest'
-import boilerplateModule from '../src'
-import {HTTP_AFTER_BOOT} from '../src/constants'
+import webserverModule from '../src'
+import {HTTP_AFTER_BOOT, HTTP_REQUEST} from '../src/constants'
 
 test('Web server bootstrap', assert => {
   const getState = () => {
@@ -30,11 +30,68 @@ test('Web server bootstrap', assert => {
         })
     }
 
+    if (action.type === HTTP_REQUEST) {
+      const { response } = action.payload
+
+      response.statusCode = 200
+      response.setHeader('Content-Type', 'text/plain')
+      response.end('Hello World!')
+    }
+
     return Promise.resolve()
   }
 
   const next = action => action
   const action = { type: BOOT }
 
-  boilerplateModule.middleware[BOOT]({getState, dispatch})(next)(action)
+  webserverModule.middleware[BOOT]({getState, dispatch})(next)(action)
+})
+
+test('Web server request', assert => {
+
+  const initialState = {
+    variables: { port: 3020 }
+  }
+
+  const serverModule = {
+    middleware: {
+      [HTTP_REQUEST]: store => next => action => {
+
+        const {response} = action.payload
+
+        response.statusCode = 200
+        response.setHeader('Content-Type', 'text/plain')
+        response.end('Hello Motherfocas!')
+
+        return next(action)
+      },
+
+      [HTTP_AFTER_BOOT]: store => next => action => {
+
+        const { httpServer } = action.payload
+
+        request(httpServer)
+          .get('/')
+          .expect(200)
+          .end((error, response) => {
+            if (error) throw error
+
+            assert.ok(!error, 'Ok')
+            assert.equal(response.text, 'Hello Motherfocas!')
+            assert.end()
+
+            httpServer.close()
+          })
+
+        return next(action)
+      }
+    }
+  }
+
+  const modules = [
+    webserverModule,
+    serverModule
+  ]
+
+  const app = boot(initialState, modules)
 })
