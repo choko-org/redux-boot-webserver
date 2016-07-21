@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/choko-org/redux-boot-webserver.svg?branch=master)](https://travis-ci.org/choko-org/redux-boot-webserver)
 
-Web server created using Redux Boot as it's core.
+Web server created using Redux Boot as its core.
 
 ## Install
 ```bash
@@ -55,4 +55,4 @@ const app = boot(initialState, modules)
   })
 ```
 
-Go to http://localhost:3020 and you would see the hello message.
+Go to http://localhost:3020 and you should see the hello message.
