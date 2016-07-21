@@ -23,7 +23,7 @@ import {
 
 ```js
 import boot from 'redux-boot'
-import webserverModule from 'redux-boot-webserver'
+import webserverModule, {HTTP_REQUEST} from 'redux-boot-webserver'
 
 const initialState = {
   variables: { port: 3020 }
@@ -32,14 +32,14 @@ const initialState = {
 const backendModule = {
   middleware: {
     [HTTP_REQUEST]: store => next => action => {
-
+      const nextResult = next(action)
       const {response} = action.payload
 
       response.statusCode = 200
       response.setHeader('Content-Type', 'text/plain')
       response.end('Hello Motherfocas!')
 
-      return next(action)
+      return nextResult
     }
   }
 }

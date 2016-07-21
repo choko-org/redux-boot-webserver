@@ -38,8 +38,13 @@ export default {
       return nextResult
     }
   }
-
 }
+
+export {
+  HTTP_BOOT,
+  HTTP_AFTER_BOOT,
+  HTTP_REQUEST
+} from './constants'
 
 // Http server bootstrap Action.
 export const httpBoot = createAction(HTTP_BOOT, (httpServer) => ({ httpServer }))

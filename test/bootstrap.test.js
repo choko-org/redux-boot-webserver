@@ -1,8 +1,7 @@
 import test from 'tape'
 import boot, {BOOT} from 'redux-boot'
 import request from 'supertest'
-import webserverModule from '../src'
-import {HTTP_AFTER_BOOT, HTTP_REQUEST} from '../src/constants'
+import webserverModule, {HTTP_AFTER_BOOT, HTTP_REQUEST} from '../src'
 
 test('Web server bootstrap', assert => {
   const getState = () => {
