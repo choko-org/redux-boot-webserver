@@ -10,7 +10,7 @@ test('Web server bootstrap', assert => {
     }
   }
 
-  const dispatch = (action) => {
+  const dispatch = async (action) => {
 
     if (action.type === HTTP_AFTER_BOOT) {
       const { httpServer } = action.payload
@@ -30,7 +30,7 @@ test('Web server bootstrap', assert => {
     }
 
     if (action.type === HTTP_REQUEST) {
-      const { response } = action.payload
+      const { response } = await action.payload
 
       response.statusCode = 200
       response.setHeader('Content-Type', 'text/plain')
