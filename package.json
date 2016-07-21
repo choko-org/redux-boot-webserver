@@ -1,0 +1,43 @@
+{
+  "name": "redux-boot-module-boilerplate",
+  "version": "1.0.0",
+  "description": "Redux Boot module's boilerplate.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -f dist/index.js* && webpack",
+    "pretest": "rm -f dist/test.js* && webpack --config ./webpack.config.test.js",
+    "test": "tape dist/test.js | tap-spec",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/choko-org/redux-boot-module-boilerplate.git"
+  },
+  "keywords": [
+    "redux-boot",
+    "module",
+    "redux",
+    "boilerplate"
+  ],
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/choko-org/redux-boot-module-boilerplate/issues"
+  },
+  "homepage": "https://github.com/choko-org/redux-boot-module-boilerplate#readme",
+  "devDependencies": {
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-polyfill": "^6.7.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-runtime": "^6.6.1",
+    "supertest": "^1.2.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.5.1",
+    "webpack": "^1.12.14"
+  },
+  "dependencies": {
+    "redux-boot": "^1.1.0"
+  }
+}

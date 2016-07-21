@@ -1,0 +1,74 @@
+# Node specific #
+#################
+# Ignore node modules.
+/node_modules
+
+# Webpack #
+###########
+/dist
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.svn
+
+# Logs and databases #
+######################
+provision/seeds/local/*
+
+# OS generated files #
+######################
+.DS_Store*
+*.Trash*
+ehthumbs.db
+Icon?
+Thumbs.db
+*.orig
+*.swo
+*cwatch.pid
+
+# Editors generated files #
+###########################
+.project
+.settings
+*~
+*.sublime-project
+*.sublime-workspace
+*.sublime-projectcompletions
+.Drupal.sublime-projectcomplections
+nbproject
+.buildpath
+.sass-cache
+.idea
+.idea/*
+*.log
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Vagrant #
+###########
+.vagrant
+.vagrant/*
+
+# Supervisor #
+##############
+supervisord.log
+supervisord.pid
+
+# Local files #
+###############
+conf.local.js
