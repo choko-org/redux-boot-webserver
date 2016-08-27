@@ -56,3 +56,7 @@ const app = boot(initialState, modules)
 ```
 
 Go to http://localhost:3020 and you should see the hello message.
+
+## License
+
+[MIT](LICENSE.md)
