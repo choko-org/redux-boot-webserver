@@ -1,6 +1,6 @@
 {
   "name": "redux-boot-webserver",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Redux Boot Web Server module.",
   "main": "dist/index.js",
   "scripts": {
